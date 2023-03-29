@@ -16,7 +16,6 @@ namespace server.src.Dtos
         public string? DetailsUri { get; set; }
         public IEnumerable<CompanyNameDto> Names { get; set; } = null!;
         public IEnumerable<LiquidationDto>? Liquidations { get; set; }
-        [NotMapped]
         public IEnumerable<CompanyNameDto>? AuxiliaryNames { get; set; } = new List<CompanyNameDto>();
         public IEnumerable<AddressDto>? Addresses { get; set; }
         public IEnumerable<CompanyFormDto>? CompanyForms { get; set; }

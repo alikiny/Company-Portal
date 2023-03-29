@@ -18,6 +18,19 @@ namespace server.src.Repository
 
         public async Task<bool> AddCompaniesAsync(IEnumerable<Company> companies)
         {
+            var entityTypes = _context.Model.GetEntityTypes();
+            foreach (var entityType in entityTypes)
+            {
+                var tableName = entityType.GetTableName();
+                var schemaName = entityType.GetSchema();
+                Console.WriteLine(schemaName);
+                if (!string.IsNullOrEmpty(tableName) && !string.IsNullOrEmpty(schemaName))
+                {
+                    var sql = $"TRUNCATE TABLE \"{schemaName}\".\"{tableName}\" CASCADE";
+                    _context.Database.ExecuteSqlInterpolated($"EXECUTE '{sql}'");
+                }
+            }
+            await _context.SaveChangesAsync();
             await _dbSet.AddRangeAsync(companies);
             await _context.SaveChangesAsync();
             return true;

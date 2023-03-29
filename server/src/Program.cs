@@ -1,5 +1,6 @@
 global using System.ComponentModel.DataAnnotations;
 using server.src.Database;
+using server.src.Middleware;
 using server.src.Repository;
 using server.src.Service;
 
@@ -53,6 +54,8 @@ builder.Services
 
 builder.Services.AddDbContext<DatabaseContext>();
 
+builder.Services.AddTransient<ErrorHandlerMiddleware>();
+
 WebApplication app = builder.Build();
 
 app.UseHttpsRedirection();
@@ -66,6 +69,8 @@ app.UseSwaggerUI(c =>
     });
 
 app.UseCors();
+
+app.UseErrorHandler();
 
 app.UseAuthorization();
 

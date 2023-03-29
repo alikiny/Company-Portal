@@ -25,7 +25,7 @@ namespace server.src.Database
         {
             _ = modelBuilder
             .HasPostgresEnum<AddressType>()
-            .HasPostgresEnum<Change>()
+/*             .HasPostgresEnum<Change>() */
             .HasPostgresEnum<Source>()
             .HasPostgresEnum<CompanyFormType>()
             .HasPostgresEnum<Authority>()
@@ -40,7 +40,7 @@ namespace server.src.Database
             );
             _ = dataSourceBuilder
             .MapEnum<AddressType>("address_type")
-            .MapEnum<Change>("change")
+            /* .MapEnum<Change>("change") */
             .MapEnum<Source>("source")
             .MapEnum<CompanyFormType>("company_form_type")
             .MapEnum<Authority>("authority")

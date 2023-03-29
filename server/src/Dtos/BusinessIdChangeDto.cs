@@ -1,28 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using server.src.Models;
-
 namespace server.src.Dtos
 {
     public class BusinessIdChangeDto
     {
         public Source Source { get; set; }
-        public string Description { get; set; } = null!;
-        public string Reason { get; set; } = null!;
+        public string? Description { get; set; }
+        public string? Reason { get; set; }
         public string? ChangeDate { get; set; }
-        public string OldBusinessId { get; set; } = null!;
-        public string NewBusinessId { get; set; } = null!;
+        public string? OldBusinessId { get; set; }
+        public string? NewBusinessId { get; set; }
         [MaxLength(2, ErrorMessage = "Language code must have 2 characters"), MinLength(2, ErrorMessage = "Language code must have 2 characters")]
-        public string Language { get; set; } = null!;
+        public string? Language { get; set; }
         public Register Register { get; set; }
-        public Change Change { get; set; }
+        //public Change Change { get; set; }
+        public string? Change { get; set; }
     }
 
-    [JsonConverter(typeof(JsonStringEnumConverter))]
+    /* [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Change
     {
         [EnumMember(Value = "Business ID removal")]
@@ -53,6 +46,9 @@ namespace server.src.Dtos
         PrivateTrader = 49,
 
         [EnumMember(Value = "Partial division")]
-        PartialDivision = 57
-    }
+        PartialDivision = 57,
+
+        [EnumMember(Value = "DIF")]
+        DIF,
+    } */
 }

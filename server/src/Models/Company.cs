@@ -6,7 +6,7 @@ namespace server.src.Models
 {
     public class Company
     {
-        [Key]
+        public Guid Id { get; set; }
         public string BusinessId { get; set; } = null!;
         public string Name { get; set; } = null!;
         public DateTime? RegistrationDate { get; set; }
