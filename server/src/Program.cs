@@ -1,3 +1,5 @@
+global using System.ComponentModel.DataAnnotations;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add https configuration in development
