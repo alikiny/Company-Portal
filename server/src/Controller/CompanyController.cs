@@ -15,7 +15,7 @@ namespace server.src.Controller
 
         }
         [HttpPost()]
-        public async Task<ActionResult<IEnumerable<Company>>> AddCompaniesAsync(IEnumerable<Company> companies)
+        public async Task<ActionResult<IEnumerable<Company>>> AddCompaniesAsync([FromBody] IEnumerable<Company> companies)
         {
             return Ok(await _service.AddCompaniesAsync(companies));
         }

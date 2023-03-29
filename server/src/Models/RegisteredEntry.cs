@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Threading.Tasks;
 
 namespace server.src.Models
 {
     public class RegisteredEntry : BaseModel
     {
-        public DateOnly EndDate { get; set; }
-        public DateOnly StatusDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [MaxLength(2, ErrorMessage = "Language code must have 2 characters"), MinLength(2, ErrorMessage = "Language code must have 2 characters")]
         public string Language { get; set; } = null!;
         public Authority Authority { get; set; }

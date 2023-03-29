@@ -8,7 +8,7 @@ namespace server.src.Models
         public Source Source { get; set; }
         public string Description { get; set; } = null!;
         public string Reason { get; set; } = null!;
-        public DateOnly ChangeDate { get; set; }
+        public string? ChangeDate { get; set; }
         public string OldBusinessId { get; set; } = null!;
         public string NewBusinessId { get; set; } = null!;
         [MaxLength(2, ErrorMessage = "Language code must have 2 characters"), MinLength(2, ErrorMessage = "Language code must have 2 characters")]

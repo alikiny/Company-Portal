@@ -18,10 +18,11 @@ namespace server.src.Controller
             _service = service;
         }
 
-        [HttpGet("{code}/companies")]
-        public async Task<ActionResult<Company>> GetCompaniesByCode(string postCode)
+        [HttpGet("{postCode}/companies")]
+        public async Task<ActionResult<Company>> GetCompaniesByCode([FromRoute] string postCode)
         {
             return Ok(await _service.GetByPostCodeAsycn(postCode));
+            // return Ok();
         }
     }
 }

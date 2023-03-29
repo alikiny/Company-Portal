@@ -10,6 +10,5 @@ namespace server.src.Models
         public int Order { get; set; }
         public string Name { get; set; } = null!;
         public Source Source { get; set; }
-        public Company Company { get; set; }
     }
 }

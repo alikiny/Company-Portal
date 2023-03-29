@@ -1,6 +1,7 @@
 global using System.ComponentModel.DataAnnotations;
 using server.src.Database;
 using server.src.Repository;
+using server.src.Service;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 if (builder.Environment.IsDevelopment())
 {
-    builder.WebHost.UseKestrel(options =>
+    _ = builder.WebHost.UseKestrel(options =>
     {
         options.ListenLocalhost(5500);
         // Set HTTPS port
@@ -16,7 +17,7 @@ if (builder.Environment.IsDevelopment())
             5501,
             listenOptions =>
             {
-                listenOptions.UseHttps();
+                _ = listenOptions.UseHttps();
             }
         );
     });
@@ -36,7 +37,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-.AddScoped<ICompanyRepo, CompanyRepo>();
+.AddScoped<ICompanyRepo, CompanyRepo>()
+.AddScoped<ICompanyService, CompanyService>();
 
 builder.Services.AddDbContext<DatabaseContext>();
 

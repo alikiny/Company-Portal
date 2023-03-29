@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection.Metadata;
 
 namespace server.src.Models
 {
@@ -9,16 +7,13 @@ namespace server.src.Models
         [Key]
         public string BusinessId { get; set; } = null!;
         public string Name { get; set; } = null!;
-        public DateOnly RegistrationDate { get; set; }
+        public DateTime? RegistrationDate { get; set; }
         public CompanyFormType? CompanyForm { get; set; }
         public string? DetailsUri { get; set; }
         public IEnumerable<CompanyName> Names { get; set; } = null!;
         public IEnumerable<Liquidation>? Liquidations { get; set; }
         [NotMapped]
-        public IEnumerable<CompanyName>? AuxiliaryNames
-        {
-            get => Names.AsQueryable().Where(n => n.Order > 0);
-        }
+        public IEnumerable<CompanyName>? AuxiliaryNames { get; set; } = new List<CompanyName>();
         public IEnumerable<Address>? Addresses { get; set; }
         public IEnumerable<CompanyForm>? CompanyForms { get; set; }
         public IEnumerable<BusinessLine>? BusinessLines { get; set; }
