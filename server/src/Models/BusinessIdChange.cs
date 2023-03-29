@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Threading.Tasks;
 
 namespace server.src.Models
 {
     public class BusinessIdChange
     {
+        public Guid Id { get; set; }
         public Source Source { get; set; }
         public string Description { get; set; } = null!;
         public string Reason { get; set; } = null!;
@@ -51,12 +47,6 @@ namespace server.src.Models
         PrivateTrader = 49,
 
         [EnumMember(Value = "Partial division")]
-        PartialDivision = 57,
-
-        [EnumMember(Value = "Division")]
-        DIF = 47,
-
-        [EnumMember(Value = "Fusion")]
-        FUU = 44
+        PartialDivision = 57
     }
 }

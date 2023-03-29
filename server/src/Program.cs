@@ -1,4 +1,6 @@
 global using System.ComponentModel.DataAnnotations;
+using server.src.Database;
+using server.src.Repository;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,11 @@ builder.Services.Configure<RouteOptions>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services
+.AddScoped<ICompanyRepo, CompanyRepo>();
+
+builder.Services.AddDbContext<DatabaseContext>();
 
 WebApplication app = builder.Build();
 

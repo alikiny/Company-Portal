@@ -1,17 +1,25 @@
 using server.src.Models;
+using server.src.Repository;
 
 namespace server.src.Service
 {
     public class CompanyService : ICompanyService
     {
-        public Task<bool> AddCompaniesAsync(IEnumerable<Company> companies)
+        private readonly ICompanyRepo _repo; 
+
+        public CompanyService(ICompanyRepo repo)
         {
-            throw new NotImplementedException();
+            _repo = repo;
         }
 
-        public Task<IEnumerable<Company>> GetByPostCodeAsycn(string parameter)
+        public async Task<bool> AddCompaniesAsync(IEnumerable<Company> companies)
         {
-            throw new NotImplementedException();
+            return await _repo.AddCompaniesAsync(companies);
+        }
+
+        public async Task<IEnumerable<Company>> GetByPostCodeAsycn(string postCode)
+        {
+            return await _repo.GetByPostCodeAsycn(postCode);
         }
     }
 }

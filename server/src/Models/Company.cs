@@ -1,4 +1,7 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata;
+
 namespace server.src.Models
 {
     public class Company
@@ -11,7 +14,11 @@ namespace server.src.Models
         public string? DetailsUri { get; set; }
         public IEnumerable<CompanyName> Names { get; set; } = null!;
         public IEnumerable<Liquidation>? Liquidations { get; set; }
-        public IEnumerable<CompanyName>? AuxiliaryNames { get; set; }
+        [NotMapped]
+        public IEnumerable<CompanyName>? AuxiliaryNames
+        {
+            get => Names.AsQueryable().Where(n => n.Order > 0);
+        }
         public IEnumerable<Address>? Addresses { get; set; }
         public IEnumerable<CompanyForm>? CompanyForms { get; set; }
         public IEnumerable<BusinessLine>? BusinessLines { get; set; }

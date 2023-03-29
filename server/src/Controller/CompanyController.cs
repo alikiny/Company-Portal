@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using server.src.Models;
 using server.src.Service;
@@ -9,7 +5,7 @@ using server.src.Service;
 namespace server.src.Controller
 {
     [ApiController]
-    [Route("api/v1/[controller]s")]
+    [Route("api/v1/companies")]
     public class CompanyController : ControllerBase
     {
         private readonly ICompanyService _service;

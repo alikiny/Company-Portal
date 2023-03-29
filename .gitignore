@@ -28,3 +28,4 @@ package-lock.json
 obj/
 bin/
 appsettings*.json
+Migrations/
