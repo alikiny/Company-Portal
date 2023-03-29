@@ -30,11 +30,22 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseUrls = true;
 });
 
+// Enable cors
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services
 .AddScoped<ICompanyRepo, CompanyRepo>()
@@ -53,6 +64,8 @@ app.UseSwaggerUI(c =>
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backend API");
         c.RoutePrefix = string.Empty;
     });
+
+app.UseCors();
 
 app.UseAuthorization();
 

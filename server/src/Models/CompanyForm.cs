@@ -1,8 +1,9 @@
+using server.src.Dtos;
+
 namespace server.src.Models
 {
-    public class CompanyForm : ExtensionWithSourceNLanguage
+    public class CompanyForm : CompanyFormDto
     {
-        public string Name { get; set; } = null!;
-        public string Type { get; set; } = null!;
+        public Guid Id { get; set; }
     }
 }

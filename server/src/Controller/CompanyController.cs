@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using server.src.Dtos;
 using server.src.Models;
 using server.src.Service;
 
@@ -15,7 +16,7 @@ namespace server.src.Controller
 
         }
         [HttpPost()]
-        public async Task<ActionResult<IEnumerable<Company>>> AddCompaniesAsync([FromBody] IEnumerable<Company> companies)
+        public async Task<ActionResult<IEnumerable<CompanyDto>>> AddCompaniesAsync([FromBody] IEnumerable<CompanyDto> companies)
         {
             return Ok(await _service.AddCompaniesAsync(companies));
         }

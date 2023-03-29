@@ -1,8 +1,9 @@
+using server.src.Dtos;
+
 namespace server.src.Models
 {
-    public class Language : ExtensionWithSourceNLanguage
+    public class Language : LanguageDto
     {
-        public string Name { get; set; } = null!;
-        public int Order { get; set; }
+        public Guid Id { get; set; }
     }
 }

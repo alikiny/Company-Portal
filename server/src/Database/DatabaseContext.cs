@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using server.src.Dtos;
 using server.src.Models;
 
 namespace server.src.Database
@@ -22,7 +23,7 @@ namespace server.src.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
+            _ = modelBuilder
             .HasPostgresEnum<AddressType>()
             .HasPostgresEnum<Change>()
             .HasPostgresEnum<Source>()
@@ -34,10 +35,10 @@ namespace server.src.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var dataSourceBuilder = new NpgsqlDataSourceBuilder(
+            NpgsqlDataSourceBuilder dataSourceBuilder = new NpgsqlDataSourceBuilder(
                 _config.GetConnectionString("DefaultConnection")
             );
-            dataSourceBuilder
+            _ = dataSourceBuilder
             .MapEnum<AddressType>("address_type")
             .MapEnum<Change>("change")
             .MapEnum<Source>("source")
@@ -45,8 +46,8 @@ namespace server.src.Database
             .MapEnum<Authority>("authority")
             .MapEnum<Register>("register")
             .MapEnum<Status>("status");
-            var dataSource = dataSourceBuilder.Build();
-            optionsBuilder
+            NpgsqlDataSource dataSource = dataSourceBuilder.Build();
+            _ = optionsBuilder
                 .UseNpgsql(dataSource)
                 .UseSnakeCaseNamingConvention();
         }

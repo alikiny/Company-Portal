@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using server.src.Dtos;
 
 namespace server.src.Models
 {
-    public class CompanyName : BaseModelExtension
+    public class CompanyName : CompanyNameDto
     {
-        public int Order { get; set; }
-        public string Name { get; set; } = null!;
-        public Source Source { get; set; }
+        public Guid Id { get; set; }
     }
 }

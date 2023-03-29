@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using server.src.Dtos;
 using server.src.Models;
 using server.src.Service;
 
@@ -19,7 +20,7 @@ namespace server.src.Controller
         }
 
         [HttpGet("{postCode}/companies")]
-        public async Task<ActionResult<Company>> GetCompaniesByCode([FromRoute] string postCode)
+        public async Task<ActionResult<CompanyDto>> GetCompaniesByCode([FromRoute] string postCode)
         {
             return Ok(await _service.GetByPostCodeAsycn(postCode));
             // return Ok();

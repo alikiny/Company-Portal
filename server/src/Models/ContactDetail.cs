@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using server.src.Dtos;
 
 namespace server.src.Models
 {
-    public class ContactDetail : ExtensionWithSourceNLanguage
+    public class ContactDetail : ContactDetailDto
     {
-        public string Value { get; set; } = null!;
-        public string Type { get; set; } = null!;
+        public Guid Id { get; set; }
     }
 }

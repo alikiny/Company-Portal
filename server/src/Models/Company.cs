@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using server.src.Dtos;
 
 namespace server.src.Models
 {
@@ -24,20 +26,5 @@ namespace server.src.Models
         public IEnumerable<BusinessIdChange>? BusinessIdChanges { get; set; }
     }
 
-    public enum Source
-    {
-        Common,
-        Prh,
-        Vero,
-        Ytj
-    }
-
-    public enum CompanyFormType
-    {
-        OY,
-        OYJ,
-        OK,
-        AOY,
-        VOJ
-    }
+   
 }

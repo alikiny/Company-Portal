@@ -1,7 +1,6 @@
-namespace server.src.Models
+namespace server.src.Dtos
 {
-    /* properties: id, registrationDate, endDate, version*/
-    public class BaseModelExtension : BaseModel
+    public class BaseDtoExtensions : BaseDto
     {
         public DateTime? EndDate { get; set; }
         [Range(0, int.MaxValue, ErrorMessage = "Version must be greater than or equal to {1}.")]

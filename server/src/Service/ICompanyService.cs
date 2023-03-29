@@ -1,10 +1,11 @@
+using server.src.Dtos;
 using server.src.Models;
 
 namespace server.src.Service
 {
     public interface ICompanyService
     {
-        Task<IEnumerable<Company>> GetByPostCodeAsycn(string parameter);
-        Task<bool> AddCompaniesAsync(IEnumerable<Company> companies);
+        Task<IEnumerable<CompanyDto>> GetByPostCodeAsycn(string parameter);
+        Task<bool> AddCompaniesAsync(IEnumerable<CompanyDto> companies);
     }
 }
