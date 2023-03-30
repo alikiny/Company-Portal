@@ -1,18 +1,36 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
-import { Response } from './types/businessInfo';
-import { Company } from './types/company';
+import axios, { AxiosError } from 'axios';
+
+import { Company, CompanyResponse } from './types/company';
+import { BusinessInfoResponse } from './types/businessInfo';
+
+const codes = ["02100", "00140", "00930", "00710", "01730", "00500", "01760", "01690", "00510", "00180"]
 
 const App = () => {
-  useEffect(() => {
-    axios.get<Company>("http://avoindata.prh.fi/opendata/bis/v1/3354799-3")
-      .then(res => {
-        axios.post("https://localhost:5501/api/v1/companies", res.data)
-          .then(res => console.log(res.data))
-      }).catch(e => console.log(e))
-  })
+  const onLoadData = async () => {
+    try {
+      for (let c of codes) {
+        const businessInfo = await axios.get<BusinessInfoResponse>(`https://avoindata.prh.fi/bis/v1?totalResults=false&maxResults=10&resultsFrom=0&streetAddressPostCode=${c}`)
+        const urls = businessInfo.data.results.map(info => info.detailsUri)
+        for (let u of urls) {
+          const data = (await axios.get<CompanyResponse>(u)).data.results
+          const arr = data[0].registeredEntries?.map(r => r.register)
+          if (arr?.some(a => a == 0)) {
+            console.log(arr)
+          }
+          await axios.post("https://localhost:5501/api/v1/companies", data)
+        }
+        console.log("done")
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   return (
-    <div>App</div>
+    <div>
+      <button onClick={onLoadData}>Reload data into database</button>
+    </div>
   )
 }
 

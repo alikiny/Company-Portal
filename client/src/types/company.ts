@@ -28,6 +28,10 @@ export interface Company {
     businessIdChanges: BusinessIdChange[] | null;
 }
 
+export interface CompanyResponse {
+    results: Company[]
+}
+
 export enum Source {
     Common,
     Prh,

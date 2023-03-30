@@ -18,12 +18,12 @@ namespace server.src.Repository
 
         public async Task<bool> AddCompaniesAsync(IEnumerable<Company> companies)
         {
+            // Truncate whole database before feeding new dataset 
             var entityTypes = _context.Model.GetEntityTypes();
             foreach (var entityType in entityTypes)
             {
                 var tableName = entityType.GetTableName();
                 var schemaName = entityType.GetSchema();
-                Console.WriteLine(schemaName);
                 if (!string.IsNullOrEmpty(tableName) && !string.IsNullOrEmpty(schemaName))
                 {
                     var sql = $"TRUNCATE TABLE \"{schemaName}\".\"{tableName}\" CASCADE";

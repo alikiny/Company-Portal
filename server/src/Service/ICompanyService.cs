@@ -1,5 +1,4 @@
 using server.src.Dtos;
-using server.src.Models;
 
 namespace server.src.Service
 {

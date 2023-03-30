@@ -8,6 +8,6 @@ export interface BusinessInfo {
     detailsUri: string
 }
 
-export interface Response {
+export interface BusinessInfoResponse {
     results: BusinessInfo[]
 }

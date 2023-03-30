@@ -1,4 +1,7 @@
 global using System.ComponentModel.DataAnnotations;
+global using System.Runtime.Serialization;
+global using System.Text.Json.Serialization;
+
 using server.src.Database;
 using server.src.Middleware;
 using server.src.Repository;

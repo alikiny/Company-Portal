@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+
 using server.src.Dtos;
-using server.src.Models;
 using server.src.Service;
 
 namespace server.src.Controller
