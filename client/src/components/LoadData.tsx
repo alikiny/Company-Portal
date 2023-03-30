@@ -16,7 +16,7 @@ const LoadData = () => {
         try {
             setLoading(true)
             for (let c of codes) {
-                const businessInfo = await axios.get<BusinessInfoResponse>(`https://avoindata.prh.fi/bis/v1?totalResults=false&maxResults=10&resultsFrom=0&streetAddressPostCode=${c}`)
+                const businessInfo = await axios.get<BusinessInfoResponse>(`https://avoindata.prh.fi/bis/v1?totalResults=false&maxResults=20&resultsFrom=0&streetAddressPostCode=${c}`)
                 const urls = businessInfo.data.results.map(info => info.detailsUri)
                 for (let u of urls) {
                     const data = (await axios.get<CompanyResponse>(u)).data.results
