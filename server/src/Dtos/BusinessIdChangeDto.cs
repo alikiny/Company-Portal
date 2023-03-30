@@ -10,12 +10,12 @@ namespace server.src.Dtos
         public string? NewBusinessId { get; set; }
         [MaxLength(2, ErrorMessage = "Language code must have 2 characters"), MinLength(2, ErrorMessage = "Language code must have 2 characters")]
         public string? Language { get; set; }
-        public Register Register { get; set; }
         //public Change Change { get; set; }
         public string? Change { get; set; }
     }
 
-    /* [JsonConverter(typeof(JsonStringEnumConverter))]
+    /* Because of data defect in prh api, we cannot use enum type for Change
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Change
     {
         [EnumMember(Value = "Business ID removal")]
